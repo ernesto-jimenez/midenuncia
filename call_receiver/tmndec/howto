@@ -1,0 +1,2 @@
+mencoder  "mf://*.tga" -mf fps=2 -o output.avi -ovc xvid -xvidencopts bitrate=3000 Conversor
+
