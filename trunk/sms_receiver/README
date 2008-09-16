@@ -1,0 +1,41 @@
+# Instalación
+El procesador de SMSs requiere de una serie de Ruby Gems para funcionar.
+Para comprobar que tienes todas las gemas necesarias ejecuta:
+ruby check_gems.rb
+
+En caso de que te falte alguna gema instálala como te indicará el script.
+
+# Puesta en marcha
+El procesador de SMSs puede funcionar de tres formas:
+ - smtp: Arrancar un pequeño servidor SMTP (opción por defecto)
+ - gmail: Arrancar un servicio que monitoriza una cuenta Gmail
+ - pop3: Arrancar un servicio que monitoriza una cuenta POP3
+
+Para arrancar el servicio:
+ruby server.rb start
+
+Para pararlo
+ruby server.rb stop
+
+Para arrancarlo sin mandarlo al background (ideal para debug)
+ruby server.rb run
+
+Si queremos especificar otro tipo de servicio se emplea la variable de entorno SERVER_TYPE (smtp, gmail, pop3)
+SERVER_TYPE=gmail ruby server.rb start
+SERVER_TYPE=gmail ruby server.rb stop
+SERVER_TYPE=gmail ruby server.rb run
+
+# Configuración
+La configuración se hace desde los distintos rb de cada servicio:
+servers/smtp.rb
+servers/gmail.rb
+servers/pop3.rb
+
+# Probando el sistema mediante SMTP
+Para probar cómo funciona el servicio SMTP hemos incluido un pequeño script que hace un envío mediante SMTP.
+
+El servicio se probaría así:
+ruby server.rb start # => Arrancamos el servicio
+ruby simulate_sms_received_through_smtp.rb 6XXXXXX "ok cibeles madrid"
+
+El primer argumento del script es el remitente (puede ser un móvil o un e-mail) y el segundo el mensaje que queremos procesar.
