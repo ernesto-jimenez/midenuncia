@@ -1,0 +1,5 @@
+Incluye solo pequeños cambios sobre el tmndec original para que no sobreescriba los 
+frames encima del mismo fichero sino que vaya generando ficheros con identificadores sucesivos
+
+make clean
+make
