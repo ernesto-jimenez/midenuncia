@@ -1,0 +1,42 @@
+<h1>Listing videos</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for video in @videos %>
+  <tr>
+    <td><%= video.title %></td>
+    <td><%= video.address %></td>
+    <td><%= video.lat %>, <%= video.lng %></td>
+    <td><%= link_to 'Show', video_path(video) %></td>
+    <td><%= link_to 'Destroy', video_path(video), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New video', new_video_path %>
+
+<h1>Vídeos ya publicados en youtube</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for video in Video.all %>
+  <tr>
+    <td><%= image_tag video.thumbnail_url %></td>
+    <td><%= video.embed_html(120, 120) %></td>
+    <td><%= video.description %></td>
+    <td><%= video.uid %></td>
+    <td>
+      <% if video.geotagged? %>
+      <%= image_tag map_url(video) %>
+      (<%= video.lat %>, <%= video.lng %>)
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
