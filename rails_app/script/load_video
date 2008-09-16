@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+require File.dirname(__FILE__) + '/../config/boot'
+require 'environment'
+
+def get_phone(path)
+  path.match(/call_from_(\d+)_/)[1]
+end
+
+file = ARGV[0]
+phone = get_phone(ARGV[0])
+
+user = User.find_or_create_by_phone(phone)
+video = user.build_pending_video(:video => File.open(file))
+video.save!
+msg = "Videodenuncia recibida. Envia un SMS con la palabra OK al #{TELEFONO_RECEPCION} para publicarla. Tambien puedes indicar la direccion donde se ha grabado. Ejemplo: OK cibeles madrid"
+SmsSender.send_sms(phone, msg) rescue video.destroy

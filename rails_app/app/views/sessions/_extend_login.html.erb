@@ -1,0 +1,10 @@
+<div id="login">
+  <% form_tag(login_path(:phone => params[:phone])) do %>
+    <%= label_tag 'phone' %>
+    <%= text_field_tag :phone, params[:phone], :disabled => true %>
+    <%= label_tag 'code' %>
+    <%= text_field_tag :code %>
+    
+    <%= submit_tag 'Login' %>
+  <% end %>
+</div>

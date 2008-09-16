@@ -1,0 +1,12 @@
+<h1>New session</h1>
+
+<div id="login">
+  <% form_remote_tag(:url => send_code_path) do %>
+    <%= label_tag 'phone' %>
+    <%= text_field_tag :phone, cookies[:phone] %>
+    
+    <%= submit_tag 'Get login code by SMS' %>
+  <% end %>
+</div>
+
+<%= javascript_tag '$("phone").focus();' %>

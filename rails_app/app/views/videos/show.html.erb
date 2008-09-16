@@ -1,0 +1,31 @@
+<h1><%= @video.title %></h1>
+
+<% form_for(:video, @video, :url => video_path, :html => { :method => :put }) do |f| %>
+  <%= f.error_messages %>
+  
+  <% if @video.geotagged? %>
+  <p>
+    <%= image_tag map_url(@video) %>
+  </p>
+  <p>
+    <%= @video.lat %>,<%= @video.lng %>
+  </p>
+  <% end %>
+  
+  <%= f.text_field :address %>
+  
+  <p>
+    <%= f.submit "Update coordinates" %>
+  </p>
+<% end %>
+<% form_for(:video, @video, :url => video_path, :html => { :method => :delete }) do |f| %>
+  <%= hidden_field_tag :upload, 'true' %>
+  
+  <p>
+    <%= f.submit "Upload to YouTube" %>
+  </p>
+
+<% end %>
+
+
+<%= link_to 'Back', videos_path %>
