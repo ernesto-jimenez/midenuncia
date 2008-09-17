@@ -48,6 +48,10 @@ private
       return 'ABQIAAAAnYifODmURuREAUoO1JrZeBQZijiOHmHV9tsOzSoKpKRRj9r4KhRyrSIDVydN2n13iJVHAQXJoR-SPw'
     elsif request.host_with_port == '83.34.234.6'
       return 'ABQIAAAAnYifODmURuREAUoO1JrZeBRJE4nehXZVbM2MzaIpABch14bPqBSJZK54Xp1mLlmTzxjpKXn595X38Q'
+    elsif request.host_with_port == 'salimos.ernesto-jimenez.com'
+      return 'ABQIAAAAnYifODmURuREAUoO1JrZeBS7Ykjcc-_h5MhB1uFiMt6mg1oxsxQYbYVrtELeHsgmvkiI716Ergk4mg'
+    elsif request.host_with_port == 'midenuncia.ernesto-jimenez.com'
+      return 'ABQIAAAAnYifODmURuREAUoO1JrZeBS-hQkDLulnyOjWdlVOXzrGPy3qjhSL9DG31DbSRMnmrEH6ij33R25TfA'
     else
       return ''
     end
