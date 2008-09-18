@@ -4,3 +4,9 @@ class SmsSender
     sender.send(phone, msg)
   end
 end
+
+class MmsSender
+  def self.send_mms(phone, msg, attach)
+    sender = OpenMovilForum::MMS::Sender::Movistar.send(phone, "MiDenuncia", attach, msg)
+  end
+end

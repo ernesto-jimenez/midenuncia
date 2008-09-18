@@ -15,16 +15,11 @@ module OpenMovilforum
       # Movistar MMS Sender
       class Movistar
         LOGIN = {
-          :user => '660014962',
-          :pass => '293403',
+          :user => TELEFONO_ENVIO,
+          :pass => '1509',
         }
         
         def send(msg)
-            # download attached map
-            #@file = Digest::MD5.hexdigest(msg.image) + ".gif"
-            #OpenMovilforum::MMS::ImageDownload.download(msg.image, @file)
-            @file = msg.image
-            
             @msg = msg            
             
             puts "Login @ movistar..."
@@ -63,14 +58,10 @@ module OpenMovilforum
           
           page = @agent.get("/do/multimedia/upload?l=sp-SP&v=mensajeria")
           form_upload = page.forms.name('mmsComposerUploadItemForm').first
-          form_upload.file_uploads.first.file_name = @file
-          #form_upload.file_uploads.first.value = File.read(@file)
-          #form_upload.file_uploads.first.mime_type = 'image/gif'
-          #form_upload.action = "/do/multimedia/uploadEnd"
+          form_upload.file_uploads.first.file_name = @msg.attach
           
           result = @agent.submit(form_upload)
           
-          #@page = @agent.post('http://multimedia.movistar.es/do/multimedia/show') 
           form = @page.forms.name("mmsForm").first
           @page = @agent.submit(form)
           form = @page.forms.name("mmsForm").first
@@ -80,18 +71,11 @@ module OpenMovilforum
           form.action = "/do/multimedia/send?l=sp-SP&v=mensajeria"
         end
         
-        # send the message with a GIF attached
-        def self.send(to, subject, image, body)
+        # send the message with a video attached
+        def self.send(to, subject, attach, body)
             # Build message object
-            
-            file = "#{Digest::MD5.hexdigest(image)}.gif"
-            OpenMovilforum::MMS::ImageDownload.download(image, file)
-            msg = Message.new(to, subject, file, body)
-            
+            msg = Message.new(to, subject, attach, body)            
             movi = Movistar.new().send(msg)
-            
-            # delete attached map
-            File.delete(file) if File.exists?(file)
         end
         
       end
