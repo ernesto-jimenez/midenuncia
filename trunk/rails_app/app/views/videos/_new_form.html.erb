@@ -1,0 +1,15 @@
+<div class="form">
+<% form_for(:video, @video, :url => videos_path, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages :header_tag => "strong" %>
+  
+  <p><%= label_tag 'video', 'Vídeo' %> <%= f.file_field :video %></p>
+  
+  <p><%= label_tag 'address', "Lugar" %> <%= f.text_field :address %> <br />
+  Ej: <em>Plaza del Sol, Madrid</em>  
+  </p>
+  
+  <p>
+    <%= f.submit "Subir vídeo" %>
+  </p>
+<% end %>
+</div>
