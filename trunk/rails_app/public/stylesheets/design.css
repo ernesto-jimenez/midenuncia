@@ -1,0 +1,143 @@
+a {
+  color: #00c;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background: #575f60 url(../images/background.png) top center repeat-y;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
+}
+
+div.denuncia {
+  background: #c6d3c2;
+  padding: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;  
+  width: 200px;
+  text-align: center;
+}
+
+div.denuncia h3 {
+  font-size: 12pt;
+  text-transform: uppercase;
+  color: #263635;
+}
+
+div#map {
+  clear: both;
+  text-align: center;
+  border: 4px solid #ccc;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 18pt;
+  text-transform: uppercase;
+  clear: both;
+}
+
+img {
+  border: 0px;
+}
+
+img.thumb, object {
+  background: #fff;
+  padding: 5px;
+}
+
+ul.listing {
+  list-style: none outside;
+  margin: 0px auto;
+  padding: 0px;
+  width: 720px;
+  display: block;
+}
+
+ul.listing li {
+  float: left;
+  margin: 10px;
+}
+
+#container {
+  width: 780px;
+  margin: 0px auto;
+  padding: 0px 10px;
+}
+
+#footer {
+  clear: both;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  margin-top: 50px;
+  font-size: 8pt;
+  padding: 20px 0px;
+}
+
+#header {
+  margin: 0px;
+  padding: 0px;
+}
+
+#header h1 {
+  width: 780px;
+  height: 125px;
+  margin: 0px;
+  background: url(../images/header.png) top center no-repeat;
+}
+
+#header h1 a {
+  text-decoration: none;
+  display: block;
+  width: 780px;
+  height: 125px;
+}
+
+#main {
+  text-align: left;
+  padding: 0px 10px;
+  margin: 0px;
+  margin-top: -10px;
+}
+
+#menubar {
+  margin: 0px;
+  height: 25px;
+  padding: 10px 10px 10px 10px;
+  background: url(../images/menu.png) top center no-repeat;
+}
+
+#menubar a {
+  color: #c83a75;
+  text-transform: uppercase;
+}
+
+#menubar p {
+  margin: 0px;
+  color: #fff;
+  text-align: left;
+}
+
+#header h1 a span {
+  visibility: hidden;
+}
+
+/* ------------
+   CUSTOM
+   ------------ */
+   
+#login, .form, .flash-notice, .flash-error {
+  background: #c6d3c2;
+  padding: 20px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+}
