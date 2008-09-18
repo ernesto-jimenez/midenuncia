@@ -19,7 +19,7 @@ class VideosController < ApplicationController
       end
       i += 1
     end
-    @map.center_zoom_on_points_init(points)
+    @map.center_zoom_on_points_init(*points)
     
     respond_to do |format|
       format.html # index.html.erb
