@@ -11,7 +11,7 @@
 
 <ul class="listing">
 
-<% for video in Video.all[0..9] %>
+<% for video in @videos[0..9] %>
   <li>
   <div class="denuncia">
     <p><%= video.embed_html(180, 120) %></p>

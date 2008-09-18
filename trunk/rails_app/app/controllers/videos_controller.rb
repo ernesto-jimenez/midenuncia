@@ -11,7 +11,8 @@ class VideosController < ApplicationController
     @map.control_init(:large_map => true, :map_type => true)
     
     points = Array.new
-    Video.all.each do |video|
+    @videos = Video.all
+    @videos.each do |video|
       if video.geotagged?
         points.push([video.lat, video.lng])
         @map.overlay_init(GMarker.new([video.lat, video.lng], {:info_window => video.embed_html(180, 120)}))
