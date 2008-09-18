@@ -2,7 +2,6 @@ require 'hpricot'
 
 class Video
   attr_reader :thumbnail_url, :video_url, :tags, :lat, :lng, :uid, :title, :description
-  
   def self.all
     doc = self.fetch_feed
     (doc/"//channel/item").to_a.collect! {|v| Video.new(v) }

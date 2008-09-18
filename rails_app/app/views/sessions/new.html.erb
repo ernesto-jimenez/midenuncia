@@ -1,13 +1,11 @@
-<h2>Identificarse</h2>  
-
-<p>Para <strong>subir vídeos</strong> o editar los datos de vídeos ya enviados (como la geolocalización) debes identificarte con tu número de móvil. Recibirás gratuitamente un SMS con la contraseña.</p>
+<h1>New session</h1>
 
 <div id="login">
   <% form_remote_tag(:url => send_code_path) do %>
-    <%= label_tag 'phone', 'Móvil' %>
+    <%= label_tag 'phone' %>
     <%= text_field_tag :phone, cookies[:phone] %>
     
-    <%= submit_tag 'Obtener contraseña por SMS' %>
+    <%= submit_tag 'Get login code by SMS' %>
   <% end %>
 </div>
 
