@@ -1,31 +1,34 @@
-<h1><%= @video.title %></h1>
+<h2><%= @video.title %></h2>
 
+<p>Ahora puedes puedes revisar que los datos sean correctos y confirmar la videodenuncia. Hasta que no la hayas confirmado, no se publicará en YouTube ni aparecerá en <strong>MiDenuncia</strong>.</p>
+
+<p>Recuerda que este paso también puedes hacerlo vía móvil, siguiendo las instrucciones que te habrán llegado en un MMS.</p>
+
+<div class="form">  
 <% form_for(:video, @video, :url => video_path, :html => { :method => :put }) do |f| %>
-  <%= f.error_messages %>
+  <%= f.error_messages :header_tag => "strong" %>
   
   <% if @video.geotagged? %>
   <p>
-    <%= image_tag map_url(@video) %>
+    <%= image_tag map_url(@video), :class => "thumb" %>
   </p>
   <p>
-    <%= @video.lat %>,<%= @video.lng %>
+  Latitud y Longitud: <%= @video.lat %>, <%= @video.lng %>
   </p>
   <% end %>
   
   <%= f.text_field :address %>
   
   <p>
-    <%= f.submit "Update coordinates" %>
+    <%= f.submit "Actualizar coordenadas" %>
   </p>
 <% end %>
 <% form_for(:video, @video, :url => video_path, :html => { :method => :delete }) do |f| %>
   <%= hidden_field_tag :upload, 'true' %>
   
   <p>
-    <%= f.submit "Upload to YouTube" %>
+    <%= f.submit "Subir a Youtube" %>
   </p>
 
 <% end %>
-
-
-<%= link_to 'Back', videos_path %>
+</div>
