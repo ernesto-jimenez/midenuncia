@@ -1,5 +1,6 @@
 require 'open_movilforum'
 # Load rails app environment
+ENV['RAILS_ENV'] = 'production'
 RAILS_ROOT = File.dirname(__FILE__) + '/../../rails_app/'
 require RAILS_ROOT + 'config/boot'
 require 'environment'
