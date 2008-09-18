@@ -7,7 +7,7 @@
   <title>Videos: <%= controller.action_name %></title>
   <%= stylesheet_link_tag 'design' %>
   <%= javascript_include_tag :defaults %>
-  <%= GMap.header %>  
+  <%= GMap.header(:key => maps_api_key) %>  
 </head>
 <body>
 
