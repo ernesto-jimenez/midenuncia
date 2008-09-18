@@ -24,7 +24,7 @@ module OpenMovilforum
         
         def run_once
           pop = Net::POP3.new('pop.example.com')
-          pop.start('YourAccount', 'YourPassword')
+          pop.start(@user, @pass)
           pop.each_mail do |m|
             msg = MailMessage.new(m.pop)
             self.received(msg.body)
