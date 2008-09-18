@@ -69,5 +69,3 @@ end
 
 TELEFONO_ENVIO = "660021641"
 TELEFONO_RECEPCION = "638444957"
-
-ActionView::Base.field_error_proc = Proc.new{ |html_tag, instance| html_tag }
