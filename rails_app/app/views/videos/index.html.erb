@@ -1,42 +1,40 @@
-<h1>Listing videos</h1>
+<% if current_user and current_user.pending_video %>
 
-<table>
-  <tr>
-  </tr>
+<h2>Videodenuncia pendiente</h2>
 
-<% for video in @videos %>
-  <tr>
-    <td><%= video.title %></td>
-    <td><%= video.address %></td>
-    <td><%= video.lat %>, <%= video.lng %></td>
-    <td><%= link_to 'Show', video_path(video) %></td>
-    <td><%= link_to 'Destroy', video_path(video), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<p>Recientemente has añadido una <strong>videodenuncia</strong>. Puedes darle el visto bueno final y cambiar algunos datos antes de que se publique definitivamente en el sistema y se suba a <strong>YouTube</strong>. <%= link_to 'Confirmar y publicar videodenuncia', video_path(current_user.pending_video) %>.</p>
+
 <% end %>
-</table>
 
-<br />
+<h2>Últimas videodenuncias</h2>
+<p>Estas son las últimas videodenuncias publicadas. ¡Tú también puedes <a href="#denuncia" title="Envía una videodenuncia">enviar la tuya</a>!</p>
 
-<%= link_to 'New video', new_video_path %>
+<ul class="listing">
 
-<h1>Vídeos ya publicados en youtube</h1>
-
-<table>
-  <tr>
-  </tr>
-
-<% for video in Video.all %>
-  <tr>
-    <td><%= image_tag video.thumbnail_url %></td>
-    <td><%= video.embed_html(120, 120) %></td>
-    <td><%= video.description %></td>
-    <td><%= video.uid %></td>
-    <td>
-      <% if video.geotagged? %>
-      <%= image_tag map_url(video) %>
-      (<%= video.lat %>, <%= video.lng %>)
-      <% end %>
-    </td>
-  </tr>
+<% i = 0 %>  
+<% for video in Video.all[0..9] %>
+  <li>
+  <div class="denuncia">
+    <h3><%= ('a'..'z').to_a[i] %></h3>
+    <p><%= video.embed_html(180, 120) %></p>
+    <p><%= video.description %></p>
+  </div>
+  </li>
+  <% i += 1 %>
 <% end %>
-</table>
+</ul>
+
+<%= @map.to_html %>  
+<%= @map.div(:width => 600, :height => 400) %>
+
+<h2 id="denuncia">¡Denuncia!</h2>
+
+<p>Publica tus vídeos en <strong>MiDenuncia</strong> y da difusión a situaciones injustas. Puedes publicar tus vídeos ya existentes desde aquí o grabar uno <em>in situ</em> mediante una <strong>videollamada al <%= TELEFONO_RECEPCION %></strong>.
+</p>
+
+<% if current_user %>
+<%= render :partial => "new_form" %>
+<% else %>
+<p><strong>IMPORTANTE:</strong> Para poder publicar una videodenuncia <%= link_to 'debes identificarte', login_path %>.
+<% end %>
+
