@@ -11,16 +11,13 @@
 
 <ul class="listing">
 
-<% i = 0 %>  
 <% for video in Video.all[0..9] %>
   <li>
   <div class="denuncia">
-    <h3><%= ('a'..'z').to_a[i] %></h3>
     <p><%= video.embed_html(180, 120) %></p>
     <p><%= video.description %></p>
   </div>
   </li>
-  <% i += 1 %>
 <% end %>
 </ul>
 

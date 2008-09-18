@@ -11,13 +11,11 @@ class VideosController < ApplicationController
     @map.control_init(:large_map => true, :map_type => true)
     
     points = Array.new
-    i = 0
     Video.all.each do |video|
       if video.geotagged?
         points.push([video.lat, video.lng])
-        @map.overlay_init(GMarker.new([video.lat, video.lng], :title => ('A'..'Z').to_a[i]))
+        @map.overlay_init(GMarker.new([video.lat, video.lng], {:info_window => video.embed_html(180, 120)}))
       end
-      i += 1
     end
     @map.center_zoom_on_points_init(*points)
     
