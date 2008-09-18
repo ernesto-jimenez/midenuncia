@@ -13,4 +13,9 @@ user = User.find_or_create_by_phone(phone)
 video = user.build_pending_video(:video => File.open(file))
 video.save!
 msg = "Videodenuncia recibida. Envia un SMS con la palabra OK al #{TELEFONO_RECEPCION} para publicarla. Tambien puedes indicar la direccion donde se ha grabado. Ejemplo: OK cibeles madrid"
-SmsSender.send_sms(phone, msg) rescue video.destroy
+
+if (video.video.file_size < 194000)
+  MmsSender.send_mms(phone, msg, video.video.path) rescue video.destroy
+else
+  SmsSender.send_sms(phone, msg) rescue video.destroy
+end
