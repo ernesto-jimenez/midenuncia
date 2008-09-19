@@ -167,6 +167,7 @@ div.denuncia {
   -webkit-border-radius: 10px;  
   width: 200px;
   text-align: center;
+  height: 250px;
 }
 
 div.denuncia h3 {
