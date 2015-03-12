@@ -1,0 +1,1 @@
+MiDenuncia es una aplicación web que muestra vídeos de denuncias ciudadanas. Los vídeos se pueden enviar vía web o por teléfono móvil, y son alojados automáticamente en YouTube.
